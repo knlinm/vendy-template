@@ -235,3 +235,23 @@ for (let i = 0; i < sideNavElement.length; i++) {
         document.querySelector(`.side-navbar[data-nav='${id}']`).classList.add("open")
     })
 }
+
+var addToCardButtons = document.querySelectorAll(".add-card");
+var quickViewButtons = document.querySelectorAll(".quick-view");
+
+
+for (let i = 0; i < addToCardButtons.length; i++) {
+    addToCardButtons[i].addEventListener('click', function(e) {
+        e.preventDefault()
+        let img = this.parentElement.children[0].getAttribute("src");
+        alert(img);
+        let miniImg = document.createElement("img");
+        miniImg.setAttribute("src", img);
+        // document.querySelector(".minicard").append(miniImg)
+    })
+}
+for (let i = 0; i < quickViewButtons.length; i++) {
+    quickViewButtons[i].addEventListener('click', function(e) {
+        e.preventDefault()
+    })
+}

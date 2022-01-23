@@ -5,6 +5,9 @@
 } */
 
 @media only screen and (max-width:1200px) {
+    #header.scrolled {
+        position: static;
+    }
     .container {
         width: 966px;
     }
@@ -34,7 +37,7 @@
     .products-wrapper.fifth_slide {
         transform: translateX(-989px);
     }
-    #intro h2 {
+    .about h2 {
         font-size: 50px;
     }
     .womens img,
@@ -56,6 +59,9 @@
     }
     .side-navbar {
         display: inline-block;
+    }
+    .explore {
+        width: 936px;
     }
 }
 
@@ -79,7 +85,7 @@
     .products-wrapper.fifth_slide {
         transform: translateX(-973px);
     }
-    #intro h2 {
+    .about h2 {
         font-size: 45px;
     }
     .womens img,
@@ -92,6 +98,17 @@
     }
     #beginning a.button {
         padding: 6px 25px;
+    }
+    .explore {
+        width: 716px;
+        height: 350px;
+    }
+    #blog>.container>.blog-wrapper {
+        width: 200%;
+    }
+    #our-services>.container {
+        align-items: center;
+        flex-direction: column;
     }
 }
 
@@ -134,7 +151,7 @@
     .products-wrapper.fifth_slide {
         transform: translateX(-738px);
     }
-    #intro h2 {
+    .about h2 {
         font-size: 35px;
     }
     .womens img,
@@ -162,11 +179,22 @@
         top: 90%;
         padding: 11px 35px;
     }
+    .explore {
+        width: 510px;
+        height: 350px;
+    }
+    #blog>.container>.blog-wrapper {
+        width: 400%;
+    }
 }
 
 @media only screen and (max-width:576px) {
+    .side-navbar {
+        width: 90vw;
+    }
     .container {
-        width: 100%;
+        width: 90%;
+        margin: auto;
     }
     .beginning-info {
         width: 77%;
@@ -193,10 +221,10 @@
         width: 100%;
         height: 100%;
     }
-    #intro h6 {
+    .about h6 {
         font-size: 16px;
     }
-    #intro h2 {
+    .about h2 {
         font-size: 28px;
     }
     .slider {
@@ -231,7 +259,7 @@
     .products-wrapper.fifth_slide {
         transform: translateX(-50%);
     }
-    #intro h2 {
+    .about h2 {
         font-size: 28px;
     }
     .beginning-info h2 {
@@ -246,6 +274,13 @@
     #beginning a.button {
         top: 81%;
         padding: 6px 25px;
+    }
+    .explore {
+        width: 87vw;
+        height: 350px;
+    }
+    #blog>.container .blog {
+        width: 100vw;
     }
 }
 
