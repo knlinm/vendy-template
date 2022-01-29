@@ -243,11 +243,33 @@ var quickViewButtons = document.querySelectorAll(".quick-view");
 for (let i = 0; i < addToCardButtons.length; i++) {
     addToCardButtons[i].addEventListener('click', function(e) {
         e.preventDefault()
-        let img = this.parentElement.children[0].getAttribute("src");
-        alert(img);
-        let miniImg = document.createElement("img");
-        miniImg.setAttribute("src", img);
-        // document.querySelector(".minicard").append(miniImg)
+        let emptyAlert = document.querySelector(".social>ul>li:nth-child(4)>.dropdown>p")
+        if (emptyAlert != null) {
+            emptyAlert.remove()
+        }
+        let productId = this.parentElement.parentElement.getAttribute("data-id");
+        let productImg = document.querySelector(`.products-item[data-id='${productId}']>a>img`);
+        let productName = document.querySelector(`.products-item[data-id='${productId}']>.product-info>a`);
+        let productPrice = document.querySelector(`.products-item[data-id='${productId}']>.product-info>span`);
+
+        // alert(productName.innerText + '\n' + productPrice.innerText + '\n' + productImg.getAttribute("src"));
+        let product = document.createElement("div")
+        product.classList.add("owned-product")
+        let ownedImg = document.createElement("img")
+        ownedImg.setAttribute("src", productImg.getAttribute("src"))
+        let ownedInfo = document.createElement("div")
+        ownedInfo.classList.add("owned-info")
+        let ownedProductName = document.createElement("p")
+        ownedProductName.classList.add("product-name")
+        ownedProductName.innerText = productName.innerText
+        let ownedProductPrice = document.createElement("p")
+        ownedProductPrice.classList.add("product-price")
+        ownedProductPrice.innerText = productPrice.innerText
+        ownedInfo.append(ownedProductName)
+        ownedInfo.append(ownedProductPrice)
+        product.append(ownedImg)
+        product.append(ownedInfo)
+        document.querySelector(".social>ul>li:nth-child(4)>.dropdown").append(product)
     })
 }
 for (let i = 0; i < quickViewButtons.length; i++) {
@@ -255,3 +277,44 @@ for (let i = 0; i < quickViewButtons.length; i++) {
         e.preventDefault()
     })
 }
+
+let slider = document.querySelector(".products.on-sale")
+let innerSlider = document.querySelector(".products.on-sale>.products-wrapper")
+var coordinate;
+var coordinate2;
+var movement;
+let pressed = false;
+
+
+slider.addEventListener("mousedown", function(e) {
+    pressed = true;
+    slider.style.cursor = 'grabbing'
+    coordinate2 = e.clientX - innerSlider.offsetLeft;
+
+})
+slider.addEventListener("mouseenter", function() {
+    slider.style.cursor = 'grab'
+})
+slider.addEventListener("mouseup", function(e) {
+    slider.style.cursor = 'grab'
+    coordinate = e.clientX - innerSlider.offsetLeft;
+
+
+})
+window.addEventListener("mouseup", function(e) {
+    pressed = false;
+})
+slider.addEventListener("mousemove", function(e) {
+    if (!pressed) return;
+    e.preventDefault();
+
+    // console.log(e.movementX)
+
+    if (e.movementX > 0) {
+        slider.scrollLeft -= 5
+    } else {
+        slider.scrollLeft += 5
+    }
+
+    // innerSlider.style.transform = `translateX(-${movement - innerSlider.offsetLeft}px)`
+})

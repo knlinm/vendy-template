@@ -88,7 +88,12 @@ body {
     width: 100%;
 }
 
+ ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
 
+*/
 /* end my defaults */
 
 body>.overlay {
@@ -205,6 +210,19 @@ span.line {
     height: 20px;
 }
 
+.social>ul>li:nth-child(4)>.dropdown {
+    top: 100%;
+    left: -70%;
+    width: 170%;
+    padding: 60px 30px;
+}
+
+.social>ul>li:nth-child(4):hover>.dropdown {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.4s ease;
+}
+
 .logo {
     width: 15%;
 }
@@ -247,6 +265,7 @@ span.line {
     width: 15%;
     justify-content: end;
     align-items: center;
+    position: relative;
 }
 
 .social ul {
@@ -254,14 +273,11 @@ span.line {
     justify-content: space-between;
 }
 
-.social li:last-child {
-    position: relative;
-}
-
 .social li:last-child span {
     position: absolute;
-    top: 5%;
-    left: 110%;
+    top: 50%;
+    left: 101%;
+    transform: translateY(-50%);
     padding: 0px 3px;
     display: inline-block;
     border-radius: 100%;
@@ -369,6 +385,23 @@ span.line {
     background-position: center;
     justify-content: flex-start;
     padding-left: 26%;
+}
+
+.owned-product {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.owned-product img {
+    width: 130px;
+    height: 130px;
+}
+
+.owned-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 
