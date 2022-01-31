@@ -238,6 +238,29 @@ for (let i = 0; i < sideNavElement.length; i++) {
 
 var addToCardButtons = document.querySelectorAll(".add-card");
 var quickViewButtons = document.querySelectorAll(".quick-view");
+var links = document.querySelectorAll(".products-item>a")
+
+for (let i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", function() {
+        localStorage.Id = this.parentElement.getAttribute("data-id");
+        localStorage.productImg = document.querySelector(`.products-item[data-id='${localStorage.Id}']>a>img`).getAttribute("src");
+        localStorage.productName = document.querySelector(`.products-item[data-id='${localStorage.Id}']>.product-info>a`).innerText;
+        localStorage.productPrice = document.querySelector(`.products-item[data-id='${localStorage.Id}']>.product-info>span`).innerText;
+        console.log("yess")
+    })
+}
+
+var secondLinks = document.querySelectorAll(".product-info>a")
+
+for (let i = 0; i < secondLinks.length; i++) {
+    secondLinks[i].addEventListener("click", function() {
+        localStorage.Id = this.parentElement.parentElement.getAttribute("data-id");
+        localStorage.productImg = document.querySelector(`.products-item[data-id='${localStorage.Id}']>a>img`).getAttribute("src");
+        localStorage.productName = document.querySelector(`.products-item[data-id='${localStorage.Id}']>.product-info>a`).innerText;
+        localStorage.productPrice = document.querySelector(`.products-item[data-id='${localStorage.Id}']>.product-info>span`).innerText;
+    })
+}
+
 
 
 for (let i = 0; i < addToCardButtons.length; i++) {
@@ -247,24 +270,23 @@ for (let i = 0; i < addToCardButtons.length; i++) {
         if (emptyAlert != null) {
             emptyAlert.remove()
         }
-        let productId = this.parentElement.parentElement.getAttribute("data-id");
-        let productImg = document.querySelector(`.products-item[data-id='${productId}']>a>img`);
-        let productName = document.querySelector(`.products-item[data-id='${productId}']>.product-info>a`);
-        let productPrice = document.querySelector(`.products-item[data-id='${productId}']>.product-info>span`);
+        localStorage.Id = this.parentElement.parentElement.getAttribute("data-id");
+        localStorage.productImg = document.querySelector(`.products-item[data-id='${localStorage.Id}']>a>img`).getAttribute("src");
+        localStorage.productName = document.querySelector(`.products-item[data-id='${localStorage.Id}']>.product-info>a`).innerText;
+        localStorage.productPrice = document.querySelector(`.products-item[data-id='${localStorage.Id}']>.product-info>span`).innerText;
 
-        // alert(productName.innerText + '\n' + productPrice.innerText + '\n' + productImg.getAttribute("src"));
         let product = document.createElement("div")
         product.classList.add("owned-product")
         let ownedImg = document.createElement("img")
-        ownedImg.setAttribute("src", productImg.getAttribute("src"))
+        ownedImg.setAttribute("src", localStorage.productImg)
         let ownedInfo = document.createElement("div")
         ownedInfo.classList.add("owned-info")
         let ownedProductName = document.createElement("p")
         ownedProductName.classList.add("product-name")
-        ownedProductName.innerText = productName.innerText
+        ownedProductName.innerText = localStorage.productName
         let ownedProductPrice = document.createElement("p")
         ownedProductPrice.classList.add("product-price")
-        ownedProductPrice.innerText = productPrice.innerText
+        ownedProductPrice.innerText = localStorage.productPrice
         ownedInfo.append(ownedProductName)
         ownedInfo.append(ownedProductPrice)
         product.append(ownedImg)

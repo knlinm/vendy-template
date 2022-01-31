@@ -396,12 +396,14 @@ span.line {
 .owned-product img {
     width: 130px;
     height: 130px;
+    margin-bottom: 5%;
 }
 
 .owned-info {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    width: 60%;
 }
 
 
